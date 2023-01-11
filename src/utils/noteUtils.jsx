@@ -34,8 +34,8 @@ export const noteLoader = async ({ params: { noteId } }) => {
   console.log("loader", { noteId });
   const query = `query Folder($noteId: String) {
     note(noteId: $noteId) {
-      id
       content
+      id
     }
   }
   
@@ -46,6 +46,7 @@ export const noteLoader = async ({ params: { noteId } }) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
+      Authorization: "Bearer.....",
     },
     body: JSON.stringify({
       query,

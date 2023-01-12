@@ -1,7 +1,8 @@
-import { Avatar, Menu, MenuItem, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthProvider";
+import { Avatar, Menu, MenuItem, Typography } from '@mui/material';
+import { Box } from '@mui/system';
+import React, { useContext } from 'react';
+import { useState } from 'react';
+import { AuthContext } from '../context/AuthProvider';
 
 export default function UserMenu() {
   const {
@@ -10,6 +11,7 @@ export default function UserMenu() {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const open = Boolean(anchorEl);
+  // console.log({user})
 
   const handleLogout = () => {
     auth.signOut();
@@ -22,19 +24,21 @@ export default function UserMenu() {
   const handleClick = (e) => {
     setAnchorEl(e.currentTarget);
   };
-
   return (
     <>
-      <Box sx={{ display: "flex" }} onClick={handleClick}>
+      <Box
+        sx={{ display: 'flex', '&:hover': { cursor: 'pointer' } }}
+        onClick={handleClick}
+      >
         <Typography>{displayName}</Typography>
         <Avatar
-          alt="avatar"
+          alt='avatar'
           src={photoURL}
-          sx={{ width: 24, height: 24, marginLeft: "5px" }}
+          sx={{ width: 24, height: 24, marginLeft: '5px' }}
         />
       </Box>
       <Menu
-        id="basic-menu"
+        id='basic-menu'
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}

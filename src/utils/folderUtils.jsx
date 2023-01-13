@@ -1,4 +1,4 @@
-import { graphQLRequest } from './request';
+import { graphQLRequest } from "./request";
 
 export const foldersLoader = async () => {
   const query = `query Folders {

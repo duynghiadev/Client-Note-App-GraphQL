@@ -1,13 +1,13 @@
-import { GRAPHQL_SERVER } from './constants';
+import { GRAPHQL_SERVER } from "./constants";
 
 export const graphQLRequest = async (payload, options = {}) => {
-  if (localStorage.getItem('accessToken')) {
+  if (localStorage.getItem("accessToken")) {
     const res = await fetch(`${GRAPHQL_SERVER}/graphql`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         ...options,
       },
       body: JSON.stringify(payload),

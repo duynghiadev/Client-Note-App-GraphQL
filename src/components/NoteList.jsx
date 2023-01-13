@@ -1,4 +1,4 @@
-import { NoteAddOutlined } from '@mui/icons-material';
+import { NoteAddOutlined } from "@mui/icons-material";
 import {
   Card,
   CardContent,
@@ -7,10 +7,10 @@ import {
   List,
   Tooltip,
   Typography,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react';
-import moment from 'moment';
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import moment from "moment";
 import {
   Link,
   Outlet,
@@ -18,7 +18,7 @@ import {
   useLoaderData,
   useSubmit,
   useNavigate,
-} from 'react-router-dom';
+} from "react-router-dom";
 
 export default function NoteList() {
   const { noteId, folderId } = useParams();
@@ -27,7 +27,7 @@ export default function NoteList() {
   const submit = useSubmit();
   const navigate = useNavigate();
 
-  console.log('[NoteLIST]', { folder });
+  console.log("[NoteLIST]", { folder });
 
   useEffect(() => {
     if (noteId) {
@@ -44,40 +44,40 @@ export default function NoteList() {
   const handleAddNewNote = () => {
     submit(
       {
-        content: '',
+        content: "",
         folderId,
       },
-      { method: 'post', action: `/folders/${folderId}` }
+      { method: "post", action: `/folders/${folderId}` }
     );
   };
 
   return (
-    <Grid container height='100%'>
+    <Grid container height="100%">
       <Grid
         item
         xs={4}
         sx={{
-          width: '100%',
+          width: "100%",
           maxWidth: 360,
-          bgcolor: '#F0EBE3',
-          height: '100%',
-          overflowY: 'auto',
-          padding: '10px',
-          textAlign: 'left',
+          bgcolor: "#F0EBE3",
+          height: "100%",
+          overflowY: "auto",
+          padding: "10px",
+          textAlign: "left",
         }}
       >
         <List
           subheader={
             <Box
               sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
             >
-              <Typography sx={{ fontWeight: 'bold' }}>Notes</Typography>
-              <Tooltip title='Add Note' onClick={handleAddNewNote}>
-                <IconButton size='small'>
+              <Typography sx={{ fontWeight: "bold" }}>Notes</Typography>
+              <Tooltip title="Add Note" onClick={handleAddNewNote}>
+                <IconButton size="small">
                   <NoteAddOutlined />
                 </IconButton>
               </Tooltip>
@@ -89,27 +89,27 @@ export default function NoteList() {
               <Link
                 key={id}
                 to={`note/${id}`}
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: "none" }}
                 onClick={() => setActiveNoteId(id)}
               >
                 <Card
                   sx={{
-                    mb: '5px',
+                    mb: "5px",
                     backgroundColor:
-                      id === activeNoteId ? 'rgb(255 211 140)' : null,
+                      id === activeNoteId ? "rgb(255 211 140)" : null,
                   }}
                 >
                   <CardContent
-                    sx={{ '&:last-child': { pb: '10px' }, padding: '10px' }}
+                    sx={{ "&:last-child": { pb: "10px" }, padding: "10px" }}
                   >
                     <div
-                      style={{ fontSize: 14, fontWeight: 'bold' }}
+                      style={{ fontSize: 14, fontWeight: "bold" }}
                       dangerouslySetInnerHTML={{
-                        __html: `${content.substring(0, 30) || 'Empty'}`,
+                        __html: `${content.substring(0, 30) || "Empty"}`,
                       }}
                     />
-                    <Typography sx={{ fontSize: '10px' }}>
-                      {moment(updatedAt).format('MMMM Do YYYY, h:mm:ss a')}
+                    <Typography sx={{ fontSize: "10px" }}>
+                      {moment(updatedAt).format("MMMM Do YYYY, h:mm:ss a")}
                     </Typography>
                   </CardContent>
                 </Card>
